@@ -11,8 +11,8 @@ import "./loginForm.scss";
 import "../../../pages/loginPage/Login.scss";
 
 function FormLogin() {
-  const [acc, setAcc] = useState("daoptc");
-  const [pass, setPass] = useState("12345678");
+  const [acc, setAcc] = useState("Anhdao2002");
+  const [pass, setPass] = useState("Anhdao2002");
   const [accError, setAccError] = useState(null);
   const [passError, setPassError] = useState(null);
 

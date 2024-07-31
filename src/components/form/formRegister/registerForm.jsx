@@ -52,11 +52,11 @@ function FormRegister() {
     if (!checkRegister()) {
       return;
     }
-    setFullnameError(null);
-    setAccError(null);
-    setPassError(null);
-    setConfirmPassError(null);
-    setServerError(null);
+    // setFullnameError(null);
+    // setAccError(null);
+    // setPassError(null);
+    // setConfirmPassError(null);
+    // setServerError(null);
     const userData = {
       FullName: fullname,
       Username: acc,
