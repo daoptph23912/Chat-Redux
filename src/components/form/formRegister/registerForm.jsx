@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import authAction from "../../../redux/actions/auth/authAction";
 import "../../../pages/registerPage/Register.scss";
 import { ButtonRegister } from "../../../common/components/button/buttonRegister";
 import InputField from "../../../common/components/input/registerInputField";
-import LoadingError from "../../../common/components/error/registerError"
+import LoadingError from "../../../common/components/error/registerError";
 import "./registerForm.scss";
 
 function FormRegister() {
@@ -33,16 +33,13 @@ function FormRegister() {
   const checkRegister = () => {
     const validationError = validateRegister(fullname, acc, pass, confirmPass);
     if (validationError) {
-      if (validationError.includes("FullName")) {
+      if (validationError.includes("Họ và tên")) {
         setFullnameError(validationError);
       } else if (validationError.includes("Tài khoản")) {
         setAccError(validationError);
       } else if (validationError.includes("Mật khẩu")) {
         setPassError(validationError);
-      } else if (
-        validationError.includes("Vui lòng nhập lại mật khẩu") ||
-        validationError.includes("không trùng")
-      ) {
+      } else if (validationError.includes("không trùng khớp")) {
         setConfirmPassError(validationError);
       }
       return false;
@@ -84,16 +81,16 @@ function FormRegister() {
     }
   };
 
-  useEffect(() => {
-    if (error) {
-      if (error.status === 400) {
-        setAccError(handleError(error));
-        setTimeout(() => {
-          setAccError(null);
-        }, 2000);
-      }
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     if (error.status === 400) {
+  //       setAccError(handleError(error));
+  //       setTimeout(() => {
+  //         setAccError(null);
+  //       }, 2000);
+  //     }
+  //   }
+  // }, [error]);
 
   useEffect(() => {
     if (user && !error) {

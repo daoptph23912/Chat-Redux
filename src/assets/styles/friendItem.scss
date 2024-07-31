@@ -1,9 +1,14 @@
 .fullname {
-    font-size: 20px;
-    margin-top: 20px;
-    line-height: 22px;
-  }
-  
+  font-size: 20px;
+  margin-top: 20px;
+  line-height: 22px;
+}
+
+.class-friend {
+  display: flex;
+  background-color: #ffffff;
+  margin: 2px 0 0 0;
+
   .content-friend {
     font-size: 14px;
     margin-top: -20px;
@@ -13,9 +18,4 @@
     max-width: 140px;
     line-height: 16px;
   }
-  .class-friend {
-    display: flex;
-    background-color: #FFFFFF;
-    margin: 2px 0 0 0;
-  }
-  
+}

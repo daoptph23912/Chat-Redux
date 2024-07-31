@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authAction from "../../../redux/actions/auth/authAction";
 import { validateLogin, handleError } from "../../../common/untils/validates";
-import LoginError from "../../../common/components/error/loginError"
+import LoginError from "../../../common/components/error/loginError";
 import LoginInput from "../../../common/components/input/loginInput";
 import { ButtonLogin } from "../../../common/components/button/buttonLogin";
 import "./loginForm.scss";
@@ -12,7 +12,7 @@ import "../../../pages/loginPage/Login.scss";
 
 function FormLogin() {
   const [acc, setAcc] = useState("daoptc");
-  const [pass, setPass] = useState("123");
+  const [pass, setPass] = useState("12345678");
   const [accError, setAccError] = useState(null);
   const [passError, setPassError] = useState(null);
 
@@ -21,7 +21,6 @@ function FormLogin() {
   const dispatch = useDispatch();
 
   const { user, loading, error } = useSelector((state) => state.auth);
-  console.log(error);
   const { login } = authAction;
 
   const handleFocus = (field) => {
@@ -47,22 +46,21 @@ function FormLogin() {
     dispatch(login(userDataLogin));
   };
 
-  useEffect(() => {
-    console.log(error);
-    if (error) {
-      if (error.status === 400) {
-        setAccError(handleError(error));
-        setTimeout(() => {
-          setAccError(null);
-        }, 1000);
-      } else if (error.status === 401) {
-        setPassError(handleError(error));
-        setTimeout(() => {
-          setPassError(null);
-        }, 1000);
-      }
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     if (error.status === 400) {
+  //       setAccError(handleError(error));
+  //       setTimeout(() => {
+  //         setAccError(null);
+  //       }, 1000);
+  //     } else if (error.status === 401) {
+  //       setPassError(handleError(error));
+  //       setTimeout(() => {
+  //         setPassError(null);
+  //       }, 1000);
+  //     }
+  //   }
+  // }, [error]);
 
   useEffect(() => {
     if (user && !error) {

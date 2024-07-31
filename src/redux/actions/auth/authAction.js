@@ -1,7 +1,7 @@
 import { message } from "antd";
 import * as types from "./constantsAuth";
 import apiRoute from "../../../common/helpers/api";
-const errorLog = "Mất kết nối server";
+// const errorLog = "Mất kết nối server";
 
 const authAction = {
   login: (userDataLogin) => async (dispatch) => {
