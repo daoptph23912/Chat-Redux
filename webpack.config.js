@@ -1,22 +1,20 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js', // Thay đổi theo cấu trúc dự án của bạn
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
-      // Các quy tắc khác
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.svg'],
+    extensions: [".js", ".jsx", ".json", ".svg"],
   },
-  // Các cấu hình khác của Webpack
 };
