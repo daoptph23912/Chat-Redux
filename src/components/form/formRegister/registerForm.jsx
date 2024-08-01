@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  validateRegister,
-  handleError,
-} from "../../../common/untils/validates";
+import { validateRegister } from "../../../common/untils/validates";
 import authAction from "../../../redux/actions/auth/authAction";
 import "../../../pages/registerPage/Register.scss";
 import { ButtonRegister } from "../../../common/components/button/buttonRegister";
@@ -23,7 +20,6 @@ function FormRegister() {
   const [accError, setAccError] = useState(null);
   const [passError, setPassError] = useState(null);
   const [confirmPassError, setConfirmPassError] = useState(null);
-  const [serverError, setServerError] = useState(null);
 
   const { register } = authAction;
   const dispatch = useDispatch();
@@ -52,11 +48,7 @@ function FormRegister() {
     if (!checkRegister()) {
       return;
     }
-    // setFullnameError(null);
-    // setAccError(null);
-    // setPassError(null);
-    // setConfirmPassError(null);
-    // setServerError(null);
+
     const userData = {
       FullName: fullname,
       Username: acc,
@@ -80,17 +72,6 @@ function FormRegister() {
       setConfirmPassError(null);
     }
   };
-
-  // useEffect(() => {
-  //   if (error) {
-  //     if (error.status === 400) {
-  //       setAccError(handleError(error));
-  //       setTimeout(() => {
-  //         setAccError(null);
-  //       }, 2000);
-  //     }
-  //   }
-  // }, [error]);
 
   useEffect(() => {
     if (user && !error) {

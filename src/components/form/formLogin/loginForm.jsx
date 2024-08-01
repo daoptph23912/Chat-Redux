@@ -46,22 +46,6 @@ function FormLogin() {
     dispatch(login(userDataLogin));
   };
 
-  // useEffect(() => {
-  //   if (error) {
-  //     if (error.status === 400) {
-  //       setAccError(handleError(error));
-  //       setTimeout(() => {
-  //         setAccError(null);
-  //       }, 1000);
-  //     } else if (error.status === 401) {
-  //       setPassError(handleError(error));
-  //       setTimeout(() => {
-  //         setPassError(null);
-  //       }, 1000);
-  //     }
-  //   }
-  // }, [error]);
-
   useEffect(() => {
     if (user && !error) {
       navigate("/chat");

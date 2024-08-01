@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Image } from "antd";
 import apiRoute from "../../helpers/api";
 import iconUser from "../../../assets/images/user_face.png";
+import { convertToBase64 } from "../convertBase64/convertToBase64";
 
 const AvatarListFriend = ({ avatarUrl, isOnline }) => {
+  const [avatar, setAvatar] = useState(iconUser);
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem(`avatar_${avatarUrl}`);
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
+    } else {
+      const url = apiRoute.getAvatarUrl(avatarUrl);
+      convertToBase64(url, (base64Image) => {
+        localStorage.setItem(`avatar_${avatarUrl}`, base64Image);
+        setAvatar(base64Image);
+      });
+    }
+  }, [avatarUrl]);
+
   return (
     <div style={{ position: "relative", display: "flex" }}>
       <Image
-        src={apiRoute.getAvatarUrl(avatarUrl)}
+        src={avatar}
         style={{
           width: "45px",
           height: "45px",

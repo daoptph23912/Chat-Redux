@@ -1,18 +1,18 @@
 export const validateLogin = (acc, pass) => {
-  const accRegex = /^[a-zA-Z0-9]{6,}$/;  // Tài khoản phải có ít nhất 6 ký tự
-  const passRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;  // Mật khẩu phải có ít nhất 8 ký tự, bao gồm cả chữ và số
+  const accRegex = /^[a-zA-Z0-9]{6,}$/; // Tài khoản phải có ít nhất 6 ký tự
+  const passRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/; // Mật khẩu phải có ít nhất 8 ký tự, bao gồm cả chữ và số
 
   // if (!acc) {
   //   return "Tài khoản không được để trống";
-  // } else 
+  // } else
   if (!accRegex.test(acc)) {
     return "Tài khoản phải có ít nhất 6 ký tự";
   }
 
   if (!pass) {
     return "Mật khẩu không được để trống";
-  // } else if (!passRegex.test(pass)) {
-  //   return "Mật khẩu phải có ít nhất 8 ký tự, bao gồm cả chữ và số";
+    // } else if (!passRegex.test(pass)) {
+    //   return "Mật khẩu phải có ít nhất 8 ký tự, bao gồm cả chữ và số";
   }
   return null;
 };
@@ -38,18 +38,5 @@ export const validateRegister = (fullname, acc, pass, confirmPass) => {
     return "Mật khẩu và xác nhận mật khẩu không trùng khớp";
   }
 
-  return null;
-};
-
-export const handleError = (error) => {
-  if (error) {
-    if (error.status === 400) {
-      return "Mời nhập lại tài khoản";
-    } else if (error.status === 401) {
-      return "Mời nhập lại mật khẩu";
-    } else {
-      return null;
-    }
-  }
   return null;
 };

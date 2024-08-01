@@ -3,9 +3,20 @@ import UploadButton from "../../../common/components/image/imageLoader";
 
 const FileUpload = ({ fileList, setFileList }) => {
   const uploadRef = useRef();
-  const handleUploadChange = ({ fileList }) => {
-    setFileList(fileList);
+
+  const handleUploadChange = (e) => {
+    const files = Array.from(e.target.files);
+    const newFileList = files.map((file, index) => ({
+      uid: (fileList.length + index).toString(),
+      name: file.name,
+      status: "done",
+      url: URL.createObjectURL(file),
+      originFileObj: file,
+    }));
+
+    setFileList((prevFileList) => [...prevFileList, ...newFileList]);
   };
+
   const triggerUpload = () => {
     uploadRef.current.click();
   };
@@ -17,17 +28,7 @@ const FileUpload = ({ fileList, setFileList }) => {
         ref={uploadRef}
         style={{ display: "none" }}
         multiple
-        onChange={(e) => {
-          const files = Array.from(e.target.files);
-          const newFileList = files.map((file, index) => ({
-            uid: index.toString(),
-            name: file.name,
-            status: "done",
-            url: URL.createObjectURL(file),
-            originFileObj: file,
-          }));
-          handleUploadChange({ fileList: newFileList });
-        }}
+        onChange={handleUploadChange}
       />
       <UploadButton onClick={triggerUpload} />
     </div>
