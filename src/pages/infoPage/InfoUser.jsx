@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import userAction from "../../redux/actions/user/userActions";
-import { Form, Image, Spin } from "antd";
+import userAction from "../../redux/actions/userActions";
+import { Form,  Spin } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import ModalInfo from "../../components/modal/modalContainer";
-import { ButtonShowModal } from "../../common/components/button/buttonShowModal";
-import UserAvatar from "../../common/components/avatar/avatarUser";
+import { ButtonShowModal } from "../../common/containers/button/buttonShowModal";
+import UserAvatar from "../../common/containers/avatar/avatarUser";
 const { getInfo } = userAction;
 function InfoUser() {
   const [isModal, setIsModal] = useState(false);
@@ -46,7 +46,7 @@ function InfoUser() {
             <UserAvatar avatar={userInfo.Avatar} />
           </div>
         ) : (
-          <p>Loading user info...</p>
+          <Spin />
         )}
         <ButtonShowModal showModal={showModal} />
       </div>

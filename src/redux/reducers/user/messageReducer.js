@@ -1,4 +1,4 @@
-import * as types from "../../actions/user/constantsUser";
+import * as types from "../../constants/constantsUser";
 
 const initialState = {
   loading: false,
@@ -13,7 +13,6 @@ const messagesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null,
       };
     case types.SEND_MESSAGE_SUCCESS:
       return {

@@ -1,6 +1,6 @@
 import React from "react";
-import MessageAvatar from "../../../common/components/avatar/avatarMessage";
-import MessageTimestamp from "../../../common/components/time/timeMessage";
+import MessageAvatar from "../../../common/containers/avatar/avatarMessage";
+import MessageTimestamp from "../../../common/containers/time/timeMessage";
 import MessageContent from "./messageContent";
 import "../../../assets/styles/messageReceiveItem.scss";
 const ReceivedMessageItem = ({ msg, selectedFriend }) => {
